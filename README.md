@@ -13,7 +13,7 @@ The problem of Git flow is the complexity introduced by the hotfix and release b
 These branches can be a good idea for some organizations but are overkill for the vast majority of them. 
 Nowadays, most organizations practice continuous delivery, which means that your default branch can be deployed. 
 
-![PlantUML model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/git-flow.png)
+![Git Flow model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/git-flow.png)
 
 ## GitHub Flow
 
@@ -28,6 +28,7 @@ it is friendly for the Continuous Delivery and Continuous Integration.
 The problem of GitHub flow is that is not adequate when it needs the release plans.
 It isn’t recommended when multiple versions in production are needed
 
+[GitHub Flow model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/github-flow.png)
 
 ## GitLab Flow
 
@@ -42,15 +43,20 @@ GitLab Flow is similar to the GitHub Flow apart that they promotes enviroments a
 It is more complex that the GitHub Flow.
 It can become complex as Git Flow when it needs to maintain multiple version in production.
 
+[GitLab Flow model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/gitlab-flow.png)
+
 ## One flow
 
 One flow is the same as Git Flow apart that they don't use develop branch.
+
+[One Flow model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/one-flow.png)
 
 ## Trunk-flow.
 
 Trunk based development consists in pushing everything to master and release from that continuosly.
 Pair programming is often used instead of Pull Requests.
 
+[Trunk Flow model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/trunk-flow.png)
 
 ## Toggles Flow Stream
 
@@ -58,10 +64,12 @@ Toggles Flow Stream promotes feature flag development instead of feature branche
 While Feature branches are still possible, Toggles flow stream allows feature driven trunk based development.
 The main difference from trunk base development is that we can release different features in different enviroments at any time without having to deal with the code.
 
+[Toggles Flow Stream model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/toggles-flow-stream.png)
+
 ## Toggle Flow Map
 
 Toggle Flow Map is the same as Toggles Flow Stream apart that Toggles releases config maps instead of streams.
 This means that the application will consume the features from the config map instead of from the Toggles Stream.
 
-
+[Toggles Flow Config Map](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/toggles-flow-configmap.png)
 
