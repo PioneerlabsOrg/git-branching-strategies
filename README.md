@@ -66,7 +66,7 @@ The main difference from trunk base development is that we can release different
 
 ![Toggles Flow Stream model](https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/toggles-flow-stream.png)
 
-## Toggle Flow Map
+## Toggles Flow Map
 
 Toggle Flow Map is the same as Toggles Flow Stream apart that Toggles releases config maps instead of streams.
 This means that the application will consume the features from the config map instead of from the Toggles Stream.
