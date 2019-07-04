@@ -13,7 +13,7 @@ The problem of Git flow is the complexity introduced by the hotfix and release b
 These branches can be a good idea for some organizations but are overkill for the vast majority of them. 
 Nowadays, most organizations practice continuous delivery, which means that your default branch can be deployed. 
 
-http://www.plantuml.com/plantuml/proxy?src=https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/git-flow.puml
+![PlantUML model](http://www.plantuml.com/plantuml/proxy?src=https://github.com/PioneerlabsOrg/git-branching-strategies/blob/master/git-flow.puml)
 
 ## GitHub Flow
 
