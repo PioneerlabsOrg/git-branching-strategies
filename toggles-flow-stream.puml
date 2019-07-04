@@ -1,0 +1,67 @@
+@startuml
+actor "Developer 1" as dev1
+actor "Developer 2" as dev2
+participant "Master branch" as mb
+participant "Production" as prod
+participant "Toggles" as tog
+actor "Release manager" as rm
+
+
+dev1 -> mb: push code for feature 1
+Activate mb
+mb -> prod: github release 1.0
+Activate prod
+rm -> tog: enable feature 1
+Activate tog
+tog -> prod: enable feature 1
+Deactivate tog
+Deactivate prod
+
+
+
+Deactivate mb
+
+dev2 -> mb: push code for feature 2
+Activate mb
+dev2 -> mb: push code for feature 3
+mb -> prod: github release 2.0
+Activate prod
+rm -> tog: enable feature 3
+Activate tog
+tog -> prod: enable feature 3
+Deactivate tog
+Deactivate prod
+
+
+mb -> prod: github release  3.0
+Activate prod
+rm -> tog: enable feature 2
+Activate tog
+tog -> prod: enable feature 2
+Deactivate tog
+Deactivate prod
+Deactivate mb
+dev1 -> prod: find bug
+dev1 -> mb: fix bug
+Activate mb
+dev2 -> mb: push code for feature 4
+mb -> prod: github release 3.1
+Deactivate mb
+Activate prod
+rm -> tog: enable bug fixed
+Activate tog
+tog -> prod: enable bug fixed
+Deactivate tog
+Deactivate prod
+
+
+
+
+
+
+
+
+
+
+
+@enduml

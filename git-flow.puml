@@ -1,0 +1,59 @@
+@startuml
+actor "Developer 1" as dev1
+actor "Developer 2" as dev2
+participant "Develop branch" as db
+participant "Feature branch 1" as fb1
+participant "Feature branch 2" as fb2
+participant "Feature branch 3" as fb3
+participant "Release branch 1" as rb1
+participant "Release branch 2" as rb2
+participant "Hotfix branch 1" as hb1
+participant "Master branch" as mb
+
+
+dev1 -> db: push code
+Activate db
+db -> fb1: create feature branch 1
+Activate fb1
+db -> fb2: create feature branch 2
+Activate fb2
+Deactivate db
+
+dev2 -> db: push code
+Activate db
+db -> fb3: create feature branch 3
+Activate fb3
+fb3 --> db: merge feature branch 3
+Deactivate fb3
+Deactivate db
+Activate rb1
+db -> rb1: release 1.0
+fb1 --> db: merge feature branch 1
+Deactivate fb1
+Activate mb
+rb1 -> mb: tag 1.0
+Deactivate rb1
+mb -> hb1: hotfix 1
+Deactivate mb
+hb1 --> db: merge hotfix 1 in develop
+Activate mb
+hb1 -> mb: tag 1.1
+Deactivate mb
+dev1 -> rb2: bug fixes
+rb2 --> db: merge bugs fixes into develop
+db -> rb2: release 2.0
+Activate rb2
+Activate mb
+rb2 -> mb: tag 2.0
+Deactivate mb
+Deactivate rb2
+
+Activate db
+fb2 --> db: merge feature branch 2
+Deactivate fb2
+Deactivate db
+
+
+
+
+@enduml

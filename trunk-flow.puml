@@ -1,0 +1,46 @@
+@startuml
+actor "Developer 1" as dev1
+actor "Developer 2" as dev2
+participant "Master branch" as mb
+participant "Production" as prod
+
+
+dev1 -> mb: push code
+Activate mb
+mb -> prod: github release
+Activate prod
+Deactivate prod
+
+
+
+Deactivate mb
+
+dev2 -> mb: push code
+Activate mb
+mb -> prod: github release
+Activate prod
+Deactivate prod
+
+
+mb -> prod: github release
+Activate prod
+Deactivate prod
+Deactivate mb
+dev1 -> prod: find bug
+dev1 -> mb: fix bug
+Activate mb
+Deactivate mb
+mb -> prod: github release
+Activate prod
+Deactivate prod
+
+
+
+
+
+
+
+
+
+
+@enduml

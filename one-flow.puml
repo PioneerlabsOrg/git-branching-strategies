@@ -1,0 +1,72 @@
+@startuml
+actor "Developer 1" as dev1
+actor "Developer 2" as dev2
+participant "Master branch" as mb
+participant "Feature branch 1" as fb1
+participant "Feature branch 2" as fb2
+participant "Feature branch 3" as fb3
+participant "Bug branch 1" as bb1
+participant "Production" as prod
+participant "Production" as prod
+
+
+dev1 -> mb: push code
+Activate mb
+Activate fb1
+mb -> fb1: create feature branch 1
+fb1 --> mb: merge feature branch 1
+Deactivate fb1
+
+mb -> prod: github release tag 1.0
+Activate prod
+Deactivate prod
+
+
+
+
+
+mb -> fb2: create feature branch 2
+Activate fb2
+dev1 -> mb: find bug
+
+mb -> bb1: create temporary bug branch
+Activate bb1
+bb1 --> mb: merge temporary bug branch
+Deactivate bb1
+
+mb -> prod: github release tag 1.1
+Activate prod
+Deactivate prod
+
+Deactivate mb
+
+dev2 -> mb: push code
+Activate mb
+mb -> fb3: create feature branch 3
+Activate fb3
+fb3 --> mb: merge feature branch 3
+Deactivate fb3
+
+mb -> prod: github release tag 2.0
+Activate prod
+Deactivate prod
+
+fb2 --> mb: merge feature branch 2
+Deactivate fb2
+
+
+mb -> prod: github release tag 3.0
+Activate prod
+Deactivate mb
+
+
+Deactivate prod
+
+
+
+
+
+
+
+
+@enduml

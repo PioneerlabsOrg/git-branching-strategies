@@ -1,0 +1,104 @@
+@startuml
+actor "Developer 1" as dev1
+actor "Developer 2" as dev2
+participant "Master branch" as mb
+participant "Feature branch 1" as fb1
+participant "Feature branch 2" as fb2
+participant "Feature branch 3" as fb3
+participant "Bug branch 1" as bb1
+participant "Bug branch 2" as bb2
+participant "Bug branch 3" as bb3
+participant "Sit" as sit
+participant "Uat" as uat
+participant "Pre-Production" as preprod
+participant "Production" as prod
+
+
+dev1 -> mb: push code
+Activate mb
+Activate fb1
+mb -> fb1: create feature branch 1
+fb1 --> mb: merge feature branch 1
+Deactivate fb1
+
+
+
+
+
+
+
+mb -> fb2: create feature branch 2
+Activate fb2
+dev1 -> mb: find bug
+
+mb -> bb1: create temporary bug branch
+Activate bb1
+bb1 --> mb: merge temporary bug branch
+Deactivate bb1
+
+mb -> sit: merge master into sit
+Activate sit
+Deactivate sit
+
+Deactivate mb
+
+dev2 -> mb: push code
+Activate mb
+mb -> fb3: create feature branch 3
+Activate fb3
+fb3 --> mb: merge feature branch 3
+Deactivate fb3
+
+mb -> sit: merge master into sit
+Activate sit
+sit -> uat: merge sit into uat
+Activate uat
+dev1 -> uat: find bug 2
+mb -> bb2: create temporary  bug branch
+bb2 --> mb: merge temporary  bug branch
+mb -> sit: cherry pick bug2 fix
+mb -> uat: cherry pick bug2 fix
+uat -> preprod: merge uat into preprod
+Activate preprod
+preprod -> prod: github release 1.0
+Activate prod
+Deactivate prod
+Deactivate preprod
+Deactivate uat
+Deactivate sit
+
+fb2 --> mb: merge feature branch 2
+Deactivate fb2
+
+
+mb -> sit: merge master into sit
+Activate sit
+Deactivate sit
+
+sit -> uat: merge sit into uat
+Activate uat
+Deactivate uat
+
+uat -> preprod: merge sit into preprod
+Activate preprod
+Deactivate preprod
+
+
+Deactivate prod
+
+dev1 -> prod: find bug
+mb -> bb3: create temporary  bug branch
+Activate bb3
+bb3 --> mb: merge temporary  bug branch
+Deactivate bb3
+mb -> prod: cherry pick into prod tag
+
+
+
+
+
+
+
+
+
+@enduml
